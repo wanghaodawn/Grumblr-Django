@@ -1,0 +1,89 @@
+p{
+  color:black;
+  text-align:center;
+  font-family:Arial;
+  font-size:15px;
+}
+.container{
+  width:100%;
+  min-width:100%;
+  color:#ffffff;
+  text-align:center;
+  font-family:Arial;
+  font-size:10px;
+  background:#005687;
+  height:805px;
+}
+.container_bottom{
+  background:#ffffff;
+}
+#leftbar{
+  background:#eeeeee;
+  color:#ffffff;
+  margin-top:78px;
+  margin-left:13px;
+  height:700px;
+}
+#middlebar{
+  background:#eeeeee;
+  color:#ffffff;
+  margin-top:78px;
+  margin-left:29px;
+  height:700px;
+}
+#rightbar{
+  background:#eeeeee;
+  color:#ffffff;
+  margin-top:78px;
+  margin-left:29px;
+  height:700px;
+}
+.p1{
+  color:black;
+  text-align:left;
+  font-family:Arial;
+  font-size:17px;
+  font-weight:bold
+}
+.babyimg{
+  width:50px;
+  height:50px;
+}
+img{
+  margin-right:12px;
+  margin-bottom:12px;
+}
+.p2{
+  color:black;
+  text-align:left;
+  font-family:Arial;
+  font-size:10px;
+}
+body{
+  height:770px;
+  background-color:#005687;
+}
+table{
+  margin:auto;
+}
+.textright{
+  text-align:right;
+}
+.imgtitle{
+  height:15%;
+  width:15%;
+  margin-left:10px;
+  margin-top:15px;
+}
+.smallbaby{
+  width:45px;
+  height:45px;
+}
+.imgbaby{
+  height:24px;
+  margin-left:10px;
+  margin-top:15px;
+}
+.imgbaby2{
+  width:350px;
+}

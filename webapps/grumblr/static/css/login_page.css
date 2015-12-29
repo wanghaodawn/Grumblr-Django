@@ -1,0 +1,35 @@
+p{
+  color:white;
+  text-align:center;
+  font-family:Arial;
+  font-size:20px;
+}
+.container{
+  width:100%;
+  background:#005687;
+  min-width:100%;
+  color:#ffffff;
+  text-align:center;
+  font-family:Arial;
+  font-size:10px;
+}
+.container_bottom{
+  background:#ffffff;
+}
+.imgtitle{
+  height:15%;
+  width:15%;
+  margin-left:10px;
+  margin-top:15px;
+}
+table{
+  margin:auto;
+}
+.imglogo{
+  width:60%;
+  height:60%; 
+}
+.imgdownload{
+  width:15%;
+  height:15%;
+}

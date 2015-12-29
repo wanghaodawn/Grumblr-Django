@@ -1,0 +1,93 @@
+{% extends "login_base_page.html" %}
+
+{% block title %}
+  <title> Login Grumblr </title>
+  {% load static from staticfiles %}
+  <link href="{% static 'css/login_page.css' %}" type="text/css" rel="stylesheet"/> 
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-md-8">
+              {% load static from staticfiles %}
+              <img src="{% static 'images/Logo.png' %}" class="imgtitle" alt=""/>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <tr><td>
+                    <td><a class="navbar-brand" href="#">About</a>
+                    <td><a class="navbar-brand" href="#">Settings</a>
+                    <td><a class="navbar-brand" href="#">Help</a>
+              </table>
+            </div>
+          </div>
+          </div>
+      </nav>
+
+    	<div class="container">
+    	  <div class="col-md-8">
+    	  	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <p>
+            {% load static from staticfiles %}
+            <img src="{% static 'images/Logo.png' %}" class="imglogo" alt=""/>
+          </p>
+          <br />
+          <br />
+          <br />
+          <p>Join us to share your fun with the world</p>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    	  </div>
+    	  
+    	  <div class="col-md-4" style="background:#EEE; color:#000">
+    	  	<br /><br /><br /><br /><br /><br /><br />
+      		<form class="form-signin" method="post" action="{% url 'login' %}" >
+        	  <h1 class="form-signin-heading">Log in</h1>
+        	  <br />
+        	  <label for="inputUsername" class="sr-only">{{ form.username }}</label>
+        	  <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" maxlength="20">
+        	  <br />
+        	  <label for="inputPassword" class="sr-only">{{ form.password }}</label>
+        	  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" maxlength="20">
+        		<div class="checkbox">
+          		  <label>
+            	    <input type="checkbox" value="remember-me"> Remember me
+          		  </label>
+        		</div>
+            {% if forms.errors %}
+              <p style="color: red">
+                Incorrect username or password!
+              </p>
+            {% endif %}
+            <br />
+
+            <a href="{% url 'confirmmessage' %}" name = "user">Forget password?</a>
+            <br /><br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
+            {% csrf_token %}
+      		</form>
+          <br />
+          <a href={% url 'signup' %}><button class="btn btn-lg btn-default btn-block" type="submit" name="signup">Sign up</button></a>
+      		<br /><br />
+  		  </div>
+      </div>
+
+      <div class="container_bottom">
+          <br /><br /><br /><br />
+          <p>
+            {% load static from staticfiles %}
+            <img src="{% static 'images/download-on-apple-store.png' %}" class="imgdownload" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% load static from staticfiles %}
+            <img src="{% static 'images/download-on-google-play.png' %}" class="imgdownload" alt=""/></p>
+          <br /><br /><br /><br />
+      </div>
+
+{% endblock %}

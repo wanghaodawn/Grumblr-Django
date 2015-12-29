@@ -1,0 +1,66 @@
+{% extends "loggedin_base_page.html" %}
+
+{% block title %}
+  <title> Edit Profile - Grumblr</title>
+  {% load static from staticfiles %}
+  <link href="{% static 'css/signup_page.css' %}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-md-6">
+              <a href="/global_page">
+                {% load static from staticfiles %}
+                <img src="{% static 'images/Logo.png' %}" class="imgtitle" alt=""/>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <table>
+                <tr>
+                    <td><a class="navbar-brand" href="/">Edit</a>
+                    <td><a class="navbar-brand" href="{% url 'reset' %}">Reset</a>
+                    <td><a class="navbar-brand" href="#">About</a>
+                    <td><a class="navbar-brand" href="#">Settings</a>
+                    <td><a class="navbar-brand" href="#">Help</a>
+                    <td><a class="navbar-brand" href="/">Log out</a>
+              </table>
+            </div>
+          </div>
+          </div>
+      </nav>
+
+    <div class="container">
+      <div class="col-md-3">
+      </div>
+
+      <div class="col-md-6" id="middlebar" style="background:#EEE; color:#000">
+        <br /><br />
+        {% if form.photo.value %}
+          <img src="{% url 'upload_photo' user.id %}" alt="{{form.firstname.value}} {{form.lastname.value}}" height="150px">
+        {% endif %} 
+
+        <form enctype="multipart/form-data" method = "post" action = "{% url 'edit_page' %}" >
+          <table>
+            {{form}}
+          </table>
+          <br /><br />
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Save Profile</button>
+          {% csrf_token %}
+        </form>
+
+      <div class="col-md-3">
+      </div>
+    </div>
+
+
+    
+{% endblock %}

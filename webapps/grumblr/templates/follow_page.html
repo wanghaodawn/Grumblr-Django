@@ -1,0 +1,226 @@
+{% extends "loggedin_base_page.html" %}
+
+{% block title %}
+  <title> Follows Page - Grumblr</title>
+  {% load static from staticfiles %}
+  <link href="{% static 'css/global_page.css' %}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-md-4">
+              <a href="{% url 'global' %}">
+                {% load static from staticfiles %}
+                <img src="{% static 'images/Logo.png' %}" class="imgtitle" alt=""/>
+              </a>
+            </div>
+            <div class="col-md-1">
+              {% load static from staticfiles %}
+              <img src="{% static 'images/baby.jpg' %}" class="imgbaby" alt=""/>
+            </div>
+            <div class="col-md-7">
+              <table>
+                <tr><td><a class="navbar-brand" href="{% url 'follow_page' %}">Follows</a>
+                    <td><a class="navbar-brand" href="{% url 'edit_page' %}">Edit</a>
+                    <td><a class="navbar-brand" href="{% url 'reset' %}">Reset</a>
+                    <td><a class="navbar-brand" href="#">About</a>
+                    <td><a class="navbar-brand" href="#">Settings</a>
+                    <td><a class="navbar-brand" href="#">Help</a>
+                    <td><a class="navbar-brand" href="/">Log out</a>
+              </table>
+            </div>
+          </div>
+          </div>
+      </nav>
+
+      <div class="container">
+
+        <div class="col-md-2" id="leftbar">
+          <br />
+          <div class="p1">Favorites:</div>
+          <div class="p2">Messages</div>
+          <div class="p2">Photos</div>
+          <div class="p2">Events</div>
+          <br />
+          <div class="p1">Groups:</div>
+          <div class="p2">Phogrpher in Pittsburgh</div>
+          <div class="p2">Sky photographer</div>
+          <div class="p2">Photographer's community</div>
+          <div class="p2">Travel in Pennsylvania</div>
+          <div class="p2">Eat in Pennsylvania</div>
+          <br />
+          <div class="p1">Friends:</div>
+          <div class="p2">Close friends</div>
+          <div class="p2">Family</div>
+          <div class="p2">Students</div>
+          <div class="p2">Colleagues</div>
+          <div class="p2">Acquaintances</div>
+          <br />
+          <div class="p1">Interests:</div>
+          <div class="p2">Photography</div>
+          <div class="p2">Travel</div>
+          <br />
+          <div class="p1">Pages:</div>
+          <div class="p2">Like pages</div>
+          <div class="p2">Create page</div>
+          <br />
+          <div class="p1">Events:</div>
+          <div class="p2">Past events</div>
+          <div class="p2">Upcoming events</div>
+          <div class="p2">Create events</div>
+        </div>
+
+        <div class="col-md-6" id="middlebar">
+          <br />
+          <div class="p1">What's in your mind?</div>
+          <br />
+          <form method="post" action="{% url 'global' %}">
+            <input type="text" name="post" id="inputPost" class="form-control" maxlength="42" placeholder="What's in your mind">
+            <br />
+            <div class="textright">
+              <button class="btn btn-primary" type="submit">Post</button>
+            </div>
+            {% csrf_token %}
+          </form>
+          <br />
+
+          {% for error in errors %}
+            <p style="color:red">
+              {{error}}
+            </p>
+          {% endfor %}
+
+          <br />
+          <div class="p1">What's new:</div>
+          <br />
+
+          {% for post in posts %}
+            <div class="p2">{{post.text}}</div>
+            <div class="p2">{{post.date}}</div>
+            <img src="{% url 'upload_photo' post.user.id %}" alt="{{form.firstname.value}} {{form.lastname.value}}" class="smallbaby">
+            <a href="{% url 'profile_page' post.user.id %}" name="user">{{post.user.username}}</a>
+            <br /><br />
+          {% endfor %}
+
+          <!--
+          <div class="p2">A great day to memorize:</div>
+          <br />
+          <p><img src="../static/images/baby20.jpg" class="imgbaby2" alt=""/></p>
+          <div class="p2">09/09/2015</div>
+          <br />
+          -->
+        </div>
+
+        <div class="col-md-3" id="rightbar">
+          <br />
+          <div class="p1">Recent guests:</div>
+          <br />
+          <table>
+            <tr>
+              <td>{% load static from staticfiles %}
+                <img src="{% static 'images/baby1.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby2.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby3.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby4.jpg' %}" class="smallbaby" alt=""/>
+            <tr>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby5.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby6.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby7.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby8.jpg' %}" class="smallbaby" alt=""/>
+            <tr>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby9.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby10.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby11.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby12.jpg' %}" class="smallbaby" alt=""/>
+          </table>
+          <br />
+          <div class="p1">My friends:</div>
+          <br />
+          <table>
+            <tr>
+              <td>{% load static from staticfiles %}
+                <img src="{% static 'images/baby11.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby16.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby15.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby12.jpg' %}" class="smallbaby" alt=""/>
+            <tr>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby9.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby6.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby8.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby5.jpg' %}" class="smallbaby" alt=""/>
+            <tr>
+              <td>{% load static from staticfiles %}
+                <img src="{% static 'images/baby7.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby10.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby4.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby3.jpg' %}" class="smallbaby" alt=""/>
+            <tr>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby13.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby2.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby1.jpg' %}" class="smallbaby" alt=""/>
+              <td>
+                {% load static from staticfiles %}
+                <img src="{% static 'images/baby14.jpg' %}" class="smallbaby" alt=""/>
+          </table>
+          <br><br /><br />
+        </div>
+        <br />
+      </div>
+    
+{% endblock %}
